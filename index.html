@@ -1,18 +1,18 @@
 <html><head>
     <script>
-		document.addEventListener('DOMContentLoaded', () => {
-			window.setInterval(function(){
-				const lastActionTimestamp = Date.now().toString();
-			    localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
-			    window.parent.postMessage({lastActionTimestamp}, '*');
-			}, 30000)
-
-		}, false);
+	document.addEventListener('DOMContentLoaded', () => {
+		window.setInterval(function(){
+			const lastActionTimestamp = Date.now().toString();
+			localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
+			window.parent.postMessage({lastActionTimestamp}, '*');
+		}, 30000)
+	}, false);
         window.addEventListener("message", (event) => {
+		console.log(event);
         	if (event.data.lastActionTimestamp) {
-	            localStorage.setItem('lastActionTimestamp', event.data);
+	            localStorage.setItem('lastActionTimestamp', event.data.lastActionTimestamp);
         	}
-		}, false);
+	}, false);
     </script>
 </head>
 <body></body>
