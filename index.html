@@ -5,9 +5,10 @@
 			const lastActionTimestamp = Date.now().toString();
 			localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
 			window.parent.postMessage({lastActionTimestamp}, '*');
-		}, 30000)
+		}, 10000)
 	}, false);
         window.addEventListener('storage', (event) => {
+		console.log('storage event');
 		console.log(event);
         	if (event.storageArea) {
 	            window.parent.postMessage({lastActionTimestamp}, '*');
