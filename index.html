@@ -1,5 +1,12 @@
 <html><head>
     <script>
+	    document.addEventListener('DOMContentLoaded', () => {
+		window.setInterval(function(){
+			const lastActionTimestamp = Date.now().toString();
+			localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
+			window.parent.postMessage({lastActionTimestamp}, '*');
+		}, 30000)
+	}, false);
         window.addEventListener('storage', (event) => {
 		console.log(event);
         	if (event.key === 'lastActionTimestamp') {
