@@ -7,7 +7,13 @@
 			window.parent.postMessage({lastActionTimestamp}, '*');
 		}, 30000)
 	}, false);
-        window.addEventListener("message", (event) => {
+        window.addEventListener('storage', (event) => {
+		console.log(event);
+        	if (event.storageArea) {
+	            window.parent.postMessage({lastActionTimestamp}, '*');
+        	}
+	}, false);;
+	window.addEventListener("message", (event) => {
 		console.log(event);
         	if (event.data.lastActionTimestamp) {
 	            localStorage.setItem('lastActionTimestamp', event.data.lastActionTimestamp);
