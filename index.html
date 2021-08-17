@@ -1,5 +1,10 @@
 <html><head>
     <script>
+	window.setInterval(function(){
+			const lastActionTimestamp = Date.now().toString();
+			localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
+		}, 10000)
+	}, false);
         window.addEventListener('storage', (event) => {
 		console.log(event);
         	if (event.key === 'lastActionTimestamp') {
