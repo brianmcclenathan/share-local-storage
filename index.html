@@ -1,9 +1,9 @@
 <html><head>
     <script>
-		window.setInterval(function(){
+		function updateTimestamp() {
 			const lastActionTimestamp = Date.now().toString();
 			localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
-		}, 10000)
+	    	}
 		window.addEventListener('storage', (event) => {
 			console.log(event);
 			if (event.key === 'lastActionTimestamp') {
@@ -18,5 +18,5 @@
 		}, false);    
 	</script>
 </head>
-<body></body>
+<body><button onclick="updateTimestamp()">Update Timestamp</button></body>
 </html>
