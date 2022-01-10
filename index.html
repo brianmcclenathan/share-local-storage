@@ -1,22 +1,16 @@
 <html><head>
     <script>
-		function updateTimestamp() {
-			const lastActionTimestamp = Date.now().toString();
-			localStorage.setItem('lastActionTimestamp', lastActionTimestamp);
-	    	}
-		window.addEventListener('storage', (event) => {
-			console.log(event);
-			if (event.key === 'lastActionTimestamp') {
-				window.parent.postMessage({'lastActionTimestamp': event.newValue}, '*');
-			}
-		}, false);;
-		window.addEventListener("message", (event) => {
-			console.log(event);
-			if (event.data.lastActionTimestamp) {
-				localStorage.setItem('lastActionTimestamp', event.data.lastActionTimestamp);
-			}
-		}, false);    
-	</script>
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'lastActionTimestamp') {
+                window.parent.postMessage({'lastActionTimestamp': event.newValue}, '*');
+            }
+        }, false);;
+        window.addEventListener("message", (event) => {
+            if (event.data.lastActionTimestamp) {
+                localStorage.setItem('lastActionTimestamp', event.data.lastActionTimestamp);
+            }
+        }, false);    
+    </script>
 </head>
-<body><button onclick="updateTimestamp()">Update Timestamp</button></body>
+<body></body>
 </html>
